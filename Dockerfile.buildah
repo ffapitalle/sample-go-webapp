@@ -1,0 +1,10 @@
+FROM golang:1.15.3
+
+WORKDIR /app
+RUN go get -u github.com/gorilla/mux
+RUN go get -u github.com/go-sql-driver/mysql
+COPY . /app
+RUN go build -o app main.go
+
+EXPOSE 8888
+ENTRYPOINT ["./app"]
